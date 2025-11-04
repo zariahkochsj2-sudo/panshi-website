@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>磐石国际 - 免费跨境电商合作平台</title>
+  <meta name="description" content="免费场地+技术运营，0成本开TikTok Shop，单店月净利1万+" />
+  <meta name="keywords" content="跨境电商,TikTok Shop,免费合作,真实案例,磐石国际" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #003366;
+      --accent: #00BFFF;
+      --success: #28a745;
+      --light: #f8f9fa;
+      --dark: #212529;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans SC',sans-serif; background:#fff; color:#333; line-height:1.6; }
+    a { text-decoration:none; color:inherit; }
+    img { max-width:100%; display:block; }
+
+    header {
+      background:var(--primary); color:#fff; position:fixed; width:100%; z-index:1000; top:0;
+      box-shadow:0 2px 10px rgba(0,0,0,0.1);
+    }
+    nav { display:flex; justify-content:space-between; align-items:center; max-width:1200px; margin:auto; padding:1rem; }
+    .logo { font-size:1.5rem; font-weight:700; }
+    .nav-links { display:flex; gap:2rem; }
+    .nav-links a { color:#fff; font-weight:500; transition:0.3s; }
+    .nav-links a:hover { color:var(--accent); }
+    .mobile-toggle { display:none; font-size:1.5rem; cursor:pointer; }
+
+    .hero {
+      background:linear-gradient(rgba(0,51,102,0.8),rgba(0,51,102,0.8)), url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      color:#fff; text-align:center; padding:120px 20px 80px;
+    }
+    .hero h1 { font-size:2.8rem; margin-bottom:1rem; }
+    .hero p { font-size:1.2rem; max-width:700px; margin:0 auto 2rem; }
+    .cta-btn {
+      background:var(--accent); color:#fff; padding:14px 32px; border-radius:50px; font-weight:700;
+      display:inline-block; transition:0.3s; box-shadow:0 4px 15px rgba(0,191,255,0.3);
+    }
+    .cta-btn:hover { transform:translateY(-3px); box-shadow:0 6px 20px rgba(0,191,255,0.4); }
+
+    .advantages { padding:80px 20px; background:var(--light); text-align:center; }
+    .section-title { font-size:2rem; margin-bottom:3rem; color:var(--primary); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1200px; margin:auto; }
+    .card {
+      background:#fff; padding:2rem; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.05);
+      transition:0.3s; text-align:center;
+    }
+    .card:hover { transform:translateY(-10px); }
+    .card i { font-size:3rem; color:var(--accent); margin-bottom:1rem; }
+    .card h3 { margin:1rem 0 0.8rem; color:var(--primary); font-size:1.2rem; }
+    .card p { margin:0; font-size:0.95rem; color:#555; }
+
+    .process { padding:80px 20px; text-align:center; }
+    .steps { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; max-width:1000px; margin:3rem auto; }
+    .step {
+      flex:1; min-width:180px; position:relative; padding:1.5rem; background:#fff; border-radius:12px; box-shadow:0 3px 10px rgba(0,0,0,0.08);
+    }
+    .step::after {
+      content:''; position:absolute; top:50%; left:100%; width:30px; height:2px; background:var(--accent); display:none;
+    }
+    .step:not(:last-child)::after { display:block; }
+    .step-num { background:var(--primary); color:#fff; width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; font-weight:700; }
+
+    .cases { padding:80px 20px; background:#fff; text-align:center; }
+    .case-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:1200px; margin:auto; }
+    .case-card {
+      background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 8px 25px rgba(0,0,0,0.1);
+      transition:0.3s; text-align:left;
+    }
+    .case-card:hover { transform:translateY(-10px); box-shadow:0 15px 35px rgba(0,0,0,0.15); }
+    .case-img { height:200px; overflow:hidden; position:relative; background:#f9f9f9; }
+    .case-img img { width:100%; height:100%; object-fit:contain; loading:lazy; }
+    .case-tag { position:absolute; top:10px; right:10px; background:var(--success); color:#fff; padding:4px 10px; border-radius:20px; font-size:0.75rem; font-weight:600; }
+    .case-content { padding:1.5rem; }
+    .case-header { display:flex; align-items:center; gap:1rem; margin-bottom:1rem; }
+    .case-avatar { width:50px; height:50px; border-radius:50%; object-fit:cover; }
+    .case-name { font-weight:700; color:var(--primary); }
+    .case-platform { font-size:0.85rem; color:#666; }
+    .case-data { display:flex; justify-content:space-between; margin:1rem 0; font-weight:600; color:var(--dark); }
+    .case-data span { color:var(--accent); }
+    .case-desc { font-size:0.9rem; color:#555; line-height:1.5; }
+
+    .testimonials { background:var(--primary); color:#fff; padding:80px 20px; text-align:center; }
+    .testimonial { max-width:600px; margin:2rem auto; font-style:italic; }
+
+    footer { background:var(--dark); color:#ddd; padding:3rem 20px 1rem; text-align:center; }
+    .footer-links { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; margin-bottom:2rem; }
+    .footer-links a { color:#bbb; transition:0.3s; }
+    .footer-links a:hover { color:var(--accent); }
+
+    @media (max-width:992px) { .cards, .case-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px) { .cards, .case-grid { grid-template-columns:1fr; } }
+    @media (max-width:768px) {
+      .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; width:100%; background:var(--primary); padding:1rem; }
+      .nav-links.active { display:flex; }
+      .mobile-toggle { display:block; }
+      .hero h1 { font-size:2.2rem; }
+      .step::after { display:none; }
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">磐石国际</div>
+      <div class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="nav-links">
+        <a href="#home">首页</a>
+        <a href="#about">关于我们</a>
+        <a href="#cooperation">合作模式</a>
+        <a href="#cases">成功案例</a>
+        <a href="#contact">联系我们</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>免费合作，跨境电商新机遇！</h1>
+    <p>磐石国际助你单店月赚1万+净利润</p>
+    <p style="font-size:1rem;margin-top:1rem;">零成本起步 · 全程技术扶持 · 场地免费提供</p>
+    <a href="#contact" class="cta-btn">立即免费申请合作</a>
+  </section>
+
+  <section class="advantages">
+    <h2 class="section-title">为什么选择磐石国际？</h2>
+    <div class="cards">
+      <div class="card">
+        <i class="fas fa-building"></i>
+        <h3>免费场地 + 技术支持</h3>
+        <p>共享高端办公空间 + 专业运营团队全程指导</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-tools"></i>
+        <h3>全程扶持店铺免费提供技术</h3>
+        <p>从选品到广告投放，0费用，数据驱动增长</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-coins"></i>
+        <h3>单店目标1万净利润</h3>
+        <p>3-6个月实现稳定盈利，真实案例验证</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-trophy"></i>
+        <h3>成功案例持续更新</h3>
+        <p>已帮助100+商家实现跨境梦想</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-shipping-fast"></i>
+        <h3>国外仓直发</h3>
+        <p>美国/英国/日本本地仓发货，3-5天送达</p>
+      </div>
+      <div class="card">
+        <i class="fas fa-headset"></i>
+        <h3>7×12小时专属客服</h3>
+        <p>运营问题随时响应，售后无忧</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="process" id="cooperation">
+    <h2 class="section-title">合作流程 - 简单5步</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>免费申请</h4>
+        <p>提交信息，1个工作日内回复</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>场地入驻</h4>
+        <p>免费入驻上海共享办公空间</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>技术培训</h4>
+        <p>7天系统培训，快速上手</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>店铺上线</h4>
+        <p>专业选品 + 上架 + 广告投放</p>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <h4>盈利1万+</h4>
+        <p>持续优化，月净利稳定破万</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 真实案例区 -->
+  <section class="cases" id="cases">
+    <h2 class="section-title">真实合作案例（TikTok Shop 后台截图）</h2>
+    <div class="case-grid">
+
+      <!-- 案例1 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/1.png" alt="李先生 TK 美区后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="李先生" class="case-avatar">
+            <div>
+              <div class="case-name">李先生</div>
+              <div class="case-platform">TK 美区 · 家居用品</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥103,829</span></div>
+            <div>净利 <span>¥3.1万</span></div>
+          </div>
+          <p class="case-desc">“4个月稳定出单，国外仓直发，时效快，复购高！”</p>
+        </div>
+      </div>
+
+      <!-- 案例2 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/2.png" alt="王女士 TK 英区后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="王女士" class="case-avatar">
+            <div>
+              <div class="case-name">王女士</div>
+              <div class="case-platform">TK 英区 · 时尚配饰</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥85,000</span></div>
+            <div>净利 <span>¥2.6万</span></div>
+          </div>
+          <p class="case-desc">“0经验，3个月上手，团队教广告，利润全归自己。”</p>
+        </div>
+      </div>
+
+      <!-- 案例3 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/3.png" alt="张先生 TK 美区后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/men/86.jpg" alt="张先生" class="case-avatar">
+            <div>
+              <div class="case-name">张先生</div>
+              <div class="case-platform">TK 美区 · 电子配件</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥123,000</span></div>
+            <div>净利 <span>¥3.7万</span></div>
+          </div>
+          <p class="case-desc">“选品精准，广告ROI 3.8，国外仓直发，物流无忧。”</p>
+        </div>
+      </div>
+
+      <!-- 案例4 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/4.png" alt="赵女士 TK 英区后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="赵女士" class="case-avatar">
+            <div>
+              <div class="case-name">赵女士</div>
+              <div class="case-platform">TK 英区 · 户外用品</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥98,000</span></div>
+            <div>净利 <span>¥2.9万</span></div>
+          </div>
+          <p class="case-desc">“英国本地仓发货，3天到，客户好评率98%。”</p>
+        </div>
+      </div>
+
+      <!-- 案例5 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/5.png" alt="陈先生 TK 日区后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="陈先生" class="case-avatar">
+            <div>
+              <div class="case-name">陈先生</div>
+              <div class="case-platform">TK 日区 · 厨房用品</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥76,000</span></div>
+            <div>净利 <span>¥2.3万</span></div>
+          </div>
+          <p class="case-desc">“日本仓直发，物流稳定，退货率<2%。”</p>
+        </div>
+      </div>
+
+      <!-- 案例6 -->
+      <div class="case-card">
+        <div class="case-img">
+          <img src="https://tk-cases.vercel.app/img/6.png" alt="刘先生 TK 东南亚后台" loading="lazy">
+          <div class="case-tag">真实数据</div>
+        </div>
+        <div class="case-content">
+          <div class="case-header">
+            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="刘先生" class="case-avatar">
+            <div>
+              <div class="case-name">刘先生</div>
+              <div class="case-platform">TK 东南亚 · 美妆个护</div>
+            </div>
+          </div>
+          <div class="case-data">
+            <div>月销 <span>¥105,000</span></div>
+            <div>净利 <span>¥3.2万</span></div>
+          </div>
+          <p class="case-desc">“复购率高，利润稳定，团队优化广告，效果翻倍。”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2 class="section-title">客户见证</h2>
+    <div class="testimonial">
+      “第4个月净利3.1万，国外仓发货太快了，客户都说好！”<br>
+      <strong>— 李先生（TK 美区）</strong>
+    </div>
+    <div class="testimonial">
+      “完全免费，场地好，培训细，3个月净利2.6万！”<br>
+      <strong>— 王女士（TK 英区）</strong>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div style="max-width:1200px;margin:auto;">
+      <h2 style="color:#fff;margin-bottom:1.5rem;">立即免费咨询</h2>
+      <form style="max-width:500px;margin:auto;background:#fff;padding:2rem;border-radius:12px;" onsubmit="event.preventDefault(); alert('申请已提交！我们将在24小时内联系您。');">
+        <input type="text" placeholder="姓名" required style="width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
+        <input type="tel" placeholder="电话" required style="width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
+        <input type="email" placeholder="邮箱" style="width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
+        <select style="width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-radius:8px;">
+          <option>我想了解TK店铺搭建</option>
+          <option>我想了解运营指导</option>
+          <option>其他咨询</option>
+        </select>
+        <button type="submit" class="cta-btn" style="width:100%;margin-top:1rem;">提交申请</button>
+      </form>
+
+      <div class="footer-links" style="margin-top:3rem;">
+        <a href="#">微信咨询</a> |
+        <a href="#">隐私政策</a> |
+        <a href="#">服务协议</a>
+      </div>
+      <p style="margin-top:1rem;font-size:0.9rem;">
+        地址：河南省驻马店市华尔大厦B座707<br>
+        © 2025 磐石国际 版权所有
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
